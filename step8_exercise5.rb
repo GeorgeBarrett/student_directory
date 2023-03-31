@@ -1,39 +1,19 @@
-def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
-    
-  students = []
-    
-  name = gets.chomp
-    
-  while !name.empty? do
-    
-    students << {name: name, cohort: :november, hobbies: :crime}
-    puts "Now we have #{students.count} students"
-    
-    name = gets.chomp    
-  end  
-  students  
-end
-    
-def print_header
-  puts "The students of Villains Academy" 
-  puts "-------------"
-end
-    
+students = [
+  {name: "Dr. Hannibal Lecter", cohort: :november, hobby: :cannibalism},
+  {name: "Darth Vader", cohort: :november, hobby: :dark-side},
+  {name: "Nurse Ratched", cohort: :november, hobby: :hospital-crimes},
+  {name: "Michael Corleone", cohort: :november, hobby: :rock-climbing},
+  {name: "Alex DeLarge", cohort: :november, hobby: :violence},
+  {name: "The Wicked Witch of the West", cohort: :november, hobby: :evil-magic},
+  {name: "Terminator", cohort: :november, hobby: :judgment-day},
+  {name: "Freddy Krueger", cohort: :november, hobby: :nightmares},
+  {name: "The Joker", cohort: :november, hobby: :joking},
+  {name: "Joffrey Baratheon", cohort: :november, hobby: :chess},
+  {name: "Norman Bates", cohort: :november, hobby: :larping}
+]
+
 def print(students)
-  students.each do |x|
-    if x[:name].length < 12 
-      puts "#{x[:name]} (#{x[:cohort]} cohort)"
-    end
+  students.each do |student|
+    puts "#{student[:name]} #{student[:cohort]} #{student[:hobby]}"
   end
 end
-      
-def print_footer(names)
-  puts "Overall, we have #{names.count} great students"
-end
-    
-students = input_students
-print_header
-print(students)
-print_footer(students)
