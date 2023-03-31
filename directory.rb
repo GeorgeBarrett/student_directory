@@ -1,7 +1,5 @@
 # student_count = 11
 
-
-
 ## array method
 # students = [
 #   "Dr. Hannibal Lecter",
@@ -30,7 +28,6 @@
 # puts students[8]
 # puts students[9]
 # puts students[10]
-
 # puts "Overall, we have #{student_count} great students"
 
 
