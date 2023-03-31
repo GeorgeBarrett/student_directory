@@ -33,7 +33,7 @@ def print_footer(names)
   puts "Overall, we have #{names.count} great students"
 end
   
-  students = input_students
-  print_header
-  print(students)
-  print_footer(students)
+students = input_students
+print_header
+print(students)
+print_footer(students)
