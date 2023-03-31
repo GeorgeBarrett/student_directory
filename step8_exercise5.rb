@@ -1,3 +1,4 @@
+# adding more info to students
 students = [
   {name: "Dr. Hannibal Lecter", cohort: :november, hobby: :cannibalism},
   {name: "Darth Vader", cohort: :november, hobby: :dark-side},
