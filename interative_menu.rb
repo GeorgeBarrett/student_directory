@@ -8,7 +8,7 @@ def input_students
     
   while !name.empty? do
     
-  students << {name: name, cohort: :november}
+  students << {name: name, cohort: :march}
   puts "Now we have #{students.count} students"
     
   name = gets.chomp
@@ -37,7 +37,7 @@ def interactive_menu
   loop do
     
     puts "1. Input the students"
-    puts "2. Show th students"
+    puts "2. Show the students"
     puts "9. Exit"
 
     selection = gets.chomp
@@ -58,3 +58,4 @@ def interactive_menu
   interactive_menu
 end
 
+interactive_menu
