@@ -1,20 +1,23 @@
 # adding more info to students
 students = [
-  {name: "Dr. Hannibal Lecter", cohort: :november, hobby: :cannibalism},
-  {name: "Darth Vader", cohort: :november, hobby: :dark-side},
-  {name: "Nurse Ratched", cohort: :november, hobby: :hospital-crimes},
-  {name: "Michael Corleone", cohort: :november, hobby: :rock-climbing},
-  {name: "Alex DeLarge", cohort: :november, hobby: :violence},
-  {name: "The Wicked Witch of the West", cohort: :november, hobby: :evil-magic},
-  {name: "Terminator", cohort: :november, hobby: :judgment-day},
-  {name: "Freddy Krueger", cohort: :november, hobby: :nightmares},
-  {name: "The Joker", cohort: :november, hobby: :joking},
-  {name: "Joffrey Baratheon", cohort: :november, hobby: :chess},
-  {name: "Norman Bates", cohort: :november, hobby: :larping}
+  {name: "Dr. Hannibal Lecter", hobby: "cannibalism", cohort: :november},
+  {name: "Darth Vader", hobby: "the dark side", cohort: :november},
+  {name: "Nurse Ratched", hobby: "pottery", cohort: :november},
+  {name: "Michael Corleone", hobby: "Origami", cohort: :november},
+  {name: "Alex DeLarge", hobby: "baking", cohort: :november},
+  {name: "The Wicked Witch of the West", hobby: "evil magic", cohort: :november},
+  {name: "Terminator", hobby: "judgment day", cohort: :november},
+  {name: "Freddy Krueger", hobby: "nightmares", cohort: :november},
+  {name: "The Joker", hobby: "having a laugh", cohort: :november},
+  {name: "Joffrey Baratheon", hobby: "caving", cohort: :november},
+  {name: "Norman Bates", hobby: "larping", cohort: :november}
 ]
 
 def print(students)
   students.each do |student|
-    puts "#{student[:name]} #{student[:cohort]} #{student[:hobby]}"
+    puts "#{student[:name]}, hobby: #{student[:hobby]}, cohort: #{student[:cohort]}"
   end
 end
+
+print(students)
+
