@@ -9,6 +9,7 @@ def input_students
     puts "Now we have #{@students.count} students"  
     name = gets.chomp
   end
+  puts "Your students have been added"
 end
 
 def interactive_menu
@@ -72,28 +73,29 @@ def save_students
     csv_line = student_data.join(",")
     file.puts csv_line
   end
+  puts "The students have been saved to students.csv"
   file.close 
 end
 
-def load_students(filename = "students.csv")
-  file = File.open("students.csv", "r")
-  file.readlines.each |line|
-    name, cohort = line.chomp.split(",")
-    @students << {name: name, cohort: cohort.to_sym}
-  end
-  file.close
-end
+# def load_students(filename = "students.csv")
+#   file = File.open("students.csv", "r")
+#   file.readlines.each |line|
+#     name, cohort = line.chomp.split(",")
+#     @students << {name: name, cohort: cohort.to_sym}
+#   end
+#   file.close
+# end
 
-def file_search
-  filename = ARGV.first
-  return if filename.nil?
-  if File.exist?(filename)
-    load_students(filename)
-    puts "Loaded #{students.count} from #{filename}"
-  else
-    puts "Sorry #{filename} does not exist"
-    exit
-  end
-end
+# def find_file
+#   filename = ARGV.first
+#   return if filename.nil?
+#   if File.exist?(filename)
+#     load_students(filename)
+#     puts "Loaded #{students.count} from #{filename}"
+#   else
+#     puts "Sorry #{filename} does not exist"
+#     exit
+#   end
+# end
 
 interactive_menu
