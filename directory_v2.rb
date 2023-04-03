@@ -35,6 +35,7 @@ end
 def user_options(selection)
   case selection
   when "1"
+    puts ""
     input_students
   when "2"
     show_students
@@ -83,7 +84,7 @@ def load_students(filename = "students.csv")
   file.close
 end
 
-def try_load_students
+def file_search
   filename = ARGV.first
   return if filename.nil?
   if File.exist?(filename)
