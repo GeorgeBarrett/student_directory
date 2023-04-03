@@ -1,11 +1,12 @@
 def input_students
-  puts "Please enter the names of the students"
-  name = gets.chomp
-  puts "Please enter the student's cohort"
-  cohort = gets.chomp
-  puts "To finish, just hit return twice"
+  puts "To finish entering students, just hit return twice"
+  puts "---------------------------------"
+  puts "Please type the name of the student and press return. Then type the cohort and press return"
   
   students = []
+
+  name = gets.chomp
+  cohort = gets.chomp
   
   while !name.empty? do
   
@@ -13,6 +14,7 @@ def input_students
     puts "Now we have #{students.count} students"
   
     name = gets.chomp
+    cohort = gets.chomp
   end
   students  
 end
