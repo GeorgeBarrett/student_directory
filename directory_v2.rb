@@ -3,14 +3,10 @@
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
-  
-  name = gets.chomp
-  
-  while !name.empty? do
-    
+  name = gets.chomp 
+  while !name.empty? do   
     @students << {name: name, cohort: :november}
-    puts "Now we have #{@students.count} students"
-    
+    puts "Now we have #{@students.count} students"  
     name = gets.chomp
   end
 end
@@ -18,7 +14,7 @@ end
 def interactive_menu
   loop do
     print_menu
-    process(gets.chomp)
+    user_options(gets.chomp)
   end
 end
 
@@ -36,7 +32,7 @@ def show_students
   print_footer
 end
 
-def process(selection)
+def user_options(selection)
   case selection
   when "1"
     input_students
@@ -69,13 +65,11 @@ def print_footer
 end
 
 def save_students
-
   file = File.open("students.csv", "w")
-  
   @students.each do |student|
-  student_data = [student[:name], student[:cohort]]
-  csv_line = student_data.join(",")
-  file.puts csv_line
+    student_data = [student[:name], student[:cohort]]
+    csv_line = student_data.join(",")
+    file.puts csv_line
   end
   file.close 
 end
@@ -83,7 +77,7 @@ end
 def load_students(filename = "students.csv")
   file = File.open("students.csv", "r")
   file.readlines.each |line|
-  name, cohort = line.chomp.split(',')
+    name, cohort = line.chomp.split(",")
     @students << {name: name, cohort: cohort.to_sym}
   end
   file.close
