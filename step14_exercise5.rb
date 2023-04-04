@@ -50,7 +50,6 @@ def input_students
   name = STDIN.gets.chomp
   while !name.empty? do
     populating_students_array(name, @cohort)
-    # @students << {name: name, cohort: :november}
     puts "Now we have #{@students.count} students"
     name = STDIN.gets.chomp
   end
@@ -89,13 +88,11 @@ def save_students
   file.close
 end
 
-# removed parameter to make it default
 def load_students(filename)
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
     populating_students_array(name, cohort)
-    # @students << {name: name, cohort: cohort.to_sym}
   end
   file.close
 end
@@ -110,7 +107,6 @@ def find_and_load_file
     return if filename.nil?
   end
 end
-
 
 find_and_load_file
 interactive_menu
