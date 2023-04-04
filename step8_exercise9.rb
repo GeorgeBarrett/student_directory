@@ -1,4 +1,3 @@
-# write some code that puts 1 student rather than one students
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
@@ -8,10 +7,14 @@ def input_students
   name = gets.chomp
   
   while !name.empty? do
-  
-  students << {name: name, cohort: :november}
-  puts "Now we have #{students.count} students"
-  
+    students << {name: name, cohort: :november}
+
+    if students.length > 1
+      puts "Now we have #{students.count} students"
+    else
+      puts "Now we have #{students.count} student"
+    end
+
   name = gets.chomp
   end
   students  
