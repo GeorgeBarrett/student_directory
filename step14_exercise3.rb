@@ -1,4 +1,9 @@
 @students = []
+@cohort = :november
+
+def populating_students_array(name, cohort)
+  @students << {name: name, cohort: cohort.to_sym}    
+end
 
 def print_menu
   puts "1. Input the students"
@@ -21,12 +26,12 @@ def user_options(selection)
     input_students
   when "2"
     show_students
-  when "9"
-    exit 
   when "3"
     save_students
   when "4"
     load_students
+  when "9"
+    exit 
   else
     puts "I don't know what you meant, try again"
   end
@@ -37,7 +42,7 @@ def input_students
   puts "To finish, just hit return twice"
   name = STDIN.gets.chomp
   while !name.empty? do
-    @students << {name: name, cohort: :november}
+    populating_students_array(name, @cohort)
     puts "Now we have #{@students.count} students"
     name = STDIN.gets.chomp
   end
@@ -78,7 +83,7 @@ def load_students(filename = "students.csv")
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
-    @students << {name: name, cohort: cohort.to_sym}
+    populating_students_array(name, cohort)
   end
   file.close
 end
