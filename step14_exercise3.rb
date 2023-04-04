@@ -79,7 +79,7 @@ def save_students
   file.close
 end
 
-def load_students(filename = "students.csv")
+def load_students(filename)
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
@@ -89,14 +89,14 @@ def load_students(filename = "students.csv")
 end
 
 def find_and_load_file
-  filename = ARGV.first
-  return if filename.nil? 
+  filename = "students.csv"
+   
   if File.exists?(filename)
     load_students(filename)
      puts "Loaded #{@students.count} from #{filename}"
   else 
     puts "Sorry, #{filename} doesn't exist."
-    exit
+    return if filename.nil?
   end
 end
 
