@@ -37,10 +37,10 @@ def user_options(selection)
     else 
       puts "Sorry, #{load_from} doesn't exist."
     end
+  when "9"
+    exit   
   else
     puts "I don't know what you meant, try again"
-  when "9"
-    exit 
   end
 end
 
