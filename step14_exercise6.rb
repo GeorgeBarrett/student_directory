@@ -30,12 +30,12 @@ def user_options(selection)
     save_students
   when "4"
     puts "Enter the name of the file you would like to load?"
-    load_from = gets.chomp
-    if File.exists?(load_from)
-      load_students(load_from)
-      puts "Loaded from #{load_from}"
+    filename = gets.chomp
+    if File.exists?(filename)
+      load_students(filename)
+      puts "Loaded from #{filename}"
     else 
-      puts "Sorry, #{load_from} doesn't exist."
+      puts "Sorry, #{filename} doesn't exist."
     end
   when "9"
     exit   
