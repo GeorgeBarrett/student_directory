@@ -35,7 +35,7 @@ def user_options(selection)
     filename = gets.chomp
     if File.exists?(filename)
       load_students(filename)
-      puts "Loaded from #{filename}"
+      puts "Student data loaded from #{filename}"
     else 
       puts "Sorry, #{filename} doesn't exist."
     end
@@ -97,7 +97,6 @@ def load_students(filename)
   name, cohort = line.chomp.split(',')
     populating_students_array(name, cohort)
   end
-  puts "Student data loaded (it can now be shown by using option 2)"
 end
 
 def find_and_load_file
@@ -111,5 +110,4 @@ def find_and_load_file
   end
 end
 
-find_and_load_file
 interactive_menu
