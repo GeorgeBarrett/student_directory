@@ -32,12 +32,12 @@ def user_options(selection)
     save_students
   when "4"
     puts "Enter the name of the file you would like to load?"
-    load_from = gets.chomp
-    if File.exists?(load_from)
-      load_students(load_from)
-      puts "Loaded from #{load_from}"
+    filename = gets.chomp
+    if File.exists?(filename)
+      load_students(filename)
+      puts "Loaded from #{filename}"
     else 
-      puts "Sorry, #{load_from} doesn't exist."
+      puts "Sorry, #{filename} doesn't exist."
     end
   when "9"
     exit   
@@ -55,6 +55,7 @@ def input_students
     puts "Now we have #{@students.count} students"
     name = STDIN.gets.chomp
   end
+  puts "Your students have been added"
 end
 
 def show_students
@@ -87,6 +88,7 @@ def save_students
     csv_line = student_data.join(",")
     file.puts csv_line
   end
+  puts "The students have been saved"
 end
 
 def load_students(filename)
@@ -95,6 +97,7 @@ def load_students(filename)
   name, cohort = line.chomp.split(',')
     populating_students_array(name, cohort)
   end
+  puts "Student data loaded (it can now be shown by using option 2)"
 end
 
 def find_and_load_file
