@@ -80,15 +80,24 @@ def print_footer
 end
 
 def save_students
-  puts "Which file would you like to save to?"
-  save_to = gets.chomp
-  file = File.open(save_to, "w")
-  @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
+  puts "Please enter the file name and extension that you would like to save to"
+  filename = gets.chomp
+
+  if File.exist?(filename)
+    CSV.open("#{filename}", "w") { |row|
+      @students.each { |student|
+        row << [student[:name], student[:cohort]]
+      }
+    }
+  else
+    file = File.open("students.csv", "w")
+    @students.each { |student|
+      student_data = [student[:name], student[:cohort]]
+      csv_line = student_data.join(", ")
+      file.puts csv_line
+  }
   end
-  puts "The students have been saved"
+  puts "The student data has been successfully saved"      
 end
 
 def load_students(filename)
@@ -109,4 +118,5 @@ def find_and_load_file
   end
 end
 
+find_and_load_file
 interactive_menu
