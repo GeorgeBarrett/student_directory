@@ -107,7 +107,7 @@ def load_students(filename)
   end
 end
 
-def find_and_load_file
+def initial_file_load
   filename = "students.csv"
   if File.exists?(filename)
     load_students(filename)
@@ -118,5 +118,5 @@ def find_and_load_file
   end
 end
 
-find_and_load_file
+initial_file_load
 interactive_menu
