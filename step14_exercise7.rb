@@ -35,7 +35,7 @@ def user_options(selection)
     filename = gets.chomp
     if File.exists?(filename)
       load_students(filename)
-      puts "Student data loaded from #{filename}"
+      puts "Student data loaded from #{filename} and can now be shown by selecting option 2"
     else 
       puts "Sorry, #{filename} doesn't exist."
     end
