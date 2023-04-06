@@ -1,10 +1,23 @@
 require "csv"
 
 @students = []
-@cohort = :november
+@cohorts = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june", 
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december"
+]
 
 def add_students(name, cohort)
-  @students << {name: name, cohort: cohort.to_sym}    
+  @students << {name: name, cohort: cohort}    
 end
 
 def print_menu
@@ -47,16 +60,47 @@ def user_options(selection)
 end
 
 def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
-  name = STDIN.gets.chomp
-  while !name.empty? do
-    add_students(name, @cohort)
-    puts "Now we have #{@students.count} students"
+  
+  while true do
+    puts "Please enter the students you would like to add"
+    puts "type 'finished' when you are done"
     name = STDIN.gets.chomp
+    cohort = ""
+
+    break if name.downcase == "finished"
+
+    puts "Please enter the cohort you would like to enroll this student on"
+    cohort = STDIN.gets.chomp
+
+    while !@cohorts.include?(cohort.downcase) do
+      puts "I cannot enter #{name}, please enter a valid cohort"
+      cohort = STDIN.gets.chomp
+    end
+
+    puts "Name: #{name}, Cohort: #{cohort}"
+    puts "If you'd like to add this student to the Villan Academy list, type 'yes'"
+    answer = STDIN.gets.chomp
+    if answer.downcase == "yes"
+      student = Hash.new('not specified')
+      student[:name] = name
+      student[:cohort] = cohort
+      @students << student
+    end
   end
-  puts "Your students have been added"
 end
+
+# def input_students
+#   puts "Please enter the name of the student and their cohort"
+#   puts "To finish, just hit return twice"
+#   name = STDIN.gets.chomp
+#   cohort = STDIN.gets.chomp
+#   while !name.empty? do
+#     add_students(name, @cohort)
+#     puts "Now we have #{@students.count} students"
+#     name = STDIN.gets.chomp
+#   end
+#   puts "Your students have been added"
+# end
 
 def show_students
   print_header
@@ -71,7 +115,7 @@ end
 
 def print_student_list
   @students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+    puts "Name: #{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
