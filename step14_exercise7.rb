@@ -3,7 +3,7 @@ require "csv"
 @students = []
 @cohort = :november
 
-def populating_students_array(name, cohort)
+def add_students(name, cohort)
   @students << {name: name, cohort: cohort.to_sym}    
 end
 
@@ -51,7 +51,7 @@ def input_students
   puts "To finish, just hit return twice"
   name = STDIN.gets.chomp
   while !name.empty? do
-    populating_students_array(name, @cohort)
+    add_students(name, @cohort)
     puts "Now we have #{@students.count} students"
     name = STDIN.gets.chomp
   end
@@ -94,7 +94,7 @@ end
 def load_students(filename)
   CSV.foreach(filename) do |row|
   name, cohort = row
-  populating_students_array(name, cohort)
+  add_students(name, cohort)
   end
 end
 
