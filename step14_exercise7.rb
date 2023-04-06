@@ -81,24 +81,37 @@ end
 
 def save_students
   puts "Please enter the file name and extension that you would like to save to"
-  filename = gets.chomp
+  filename = STDIN.gets.chomp
 
-  if File.exist?(filename)
-    CSV.open("#{filename}", "w") { |row|
-      @students.each { |student|
-        row << [student[:name], student[:cohort]]
-      }
-    }
-  else
-    file = File.open("students.csv", "w")
-    @students.each { |student|
+  CSV.open(filename, "wb") do |csv|
+    @students.each do |student|
       student_data = [student[:name], student[:cohort]]
-      csv_line = student_data.join(", ")
-      file.puts csv_line
-  }
+      csv << student_data
+    end
   end
-  puts "The student data has been successfully saved"      
+  puts "The student data has been saved"      
 end
+
+# def save_students
+#   puts "Please enter the file name and extension that you would like to save to"
+#   filename = gets.chomp
+
+#   if File.exist?(filename)
+#     CSV.open("#{filename}", "w") { |row|
+#       @students.each { |student|
+#         row << [student[:name], student[:cohort]]
+#       }
+#     }
+#   else
+#     file = File.open("students.csv", "w")
+#     @students.each { |student|
+#       student_data = [student[:name], student[:cohort]]
+#       csv_line = student_data.join(", ")
+#       file.puts csv_line
+#   }
+#   end
+#   puts "The student data has been successfully saved"      
+# end
 
 def load_students(filename)
   CSV.foreach(filename) do |row|
